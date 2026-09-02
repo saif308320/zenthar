@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart | Zenthar Gaming</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="zx">
+    <a class="zl" href="index.html">ZENTHAR</a>
+    <nav id="sidenav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="product.html">GX</a>
+      <a href="about.html">About</a>
+      <a href="support.html">Support</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div>
+      <button class="fab" data-bag>CART <span data-count>0</span></button>
+      <button class="ham" id="burger">☰</button>
+    </div>
+  </header>
+  <main class="sec">
+    <div class="w">
+      <h1 class="glitch" style="font-size:36px">YOUR RIGS</h1>
+      <div id="list"></div>
+      <div style="margin-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px">
+        <strong id="tot"></strong>
+        <a class="fire" href="checkout.html">Checkout</a>
+      </div>
+    </div>
+  </main>
+  <footer class="zx">150 Circuit Blvd, Fremont, CA 94538 · support@zenthargaming.com · +1 510 555 0198</footer>
+  <div class="shade" id="shade"></div>
+  <aside class="drawer" id="drawer">
+    <div class="dh"><strong>LOADOUT</strong><button class="ghostx" id="dclose">Close</button></div>
+    <div class="db" id="db"></div>
+    <div class="df"><span id="dt">$0</span><a class="fire" href="cart.html">View cart</a></div>
+  </aside>
+  <script src="js/app.js"></script>
+  <script>
+    window.renderCart=function(){
+      const list=document.getElementById("list"); const c=ZX.load();
+      document.getElementById("tot").textContent="TOTAL "+ZX.money(ZX.total());
+      if(!c.length){list.innerHTML="<p>Empty. <a href='shop.html' style='color:var(--neon)'>Open shop</a>.</p>";return;}
+      list.innerHTML=c.map(i=>`<div class="line"><img src="${i.img}" alt=""><div><strong>${i.name}</strong><div>${i.config}</div></div>
+        <div><button class="ghostx" data-q="${i.key}" data-d="-1">−</button> ${i.qty} <button class="ghostx" data-q="${i.key}" data-d="1">+</button></div>
+        <div>${ZX.money(i.price*i.qty)}<br><button class="ghostx" data-rm="${i.key}">Remove</button></div></div>`).join("");
+      list.querySelectorAll("[data-rm]").forEach(b=>b.onclick=()=>ZX.remove(b.dataset.rm));
+      list.querySelectorAll("[data-q]").forEach(b=>b.onclick=()=>{const it=ZX.load().find(x=>x.key===b.dataset.q);ZX.updateQty(b.dataset.q,it.qty+Number(b.dataset.d));});
+    };
+    document.addEventListener("DOMContentLoaded",()=>window.renderCart());
+  </script>
+</body>
+</html>

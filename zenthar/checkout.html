@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | Zenthar Gaming</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="zx">
+    <a class="zl" href="index.html">ZENTHAR</a>
+    <nav id="sidenav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="product.html">GX</a>
+      <a href="about.html">About</a>
+      <a href="support.html">Support</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div>
+      <button class="fab" data-bag>CART <span data-count>0</span></button>
+      <button class="ham" id="burger">☰</button>
+    </div>
+  </header>
+  <main class="sec">
+    <div class="w">
+      <h1 class="glitch" style="font-size:36px">LOCK IN</h1>
+      <p style="color:var(--dim);margin-bottom:20px">1 SHIP / 2 PAY / 3 CONFIRM</p>
+      <div class="chk">
+        <form id="f">
+          <div id="a">
+            <label>Name</label><input required>
+            <label>Email</label><input type="email" required>
+            <label>Address</label><input required>
+            <label>City</label><input required>
+            <button type="button" class="fire" style="margin-top:16px" id="n1">Next</button>
+          </div>
+          <div id="b" hidden>
+            <label>Name on card</label><input required>
+            <label>Number</label><input required>
+            <label>Expiry</label><input required>
+            <label>CVC</label><input required>
+            <button type="button" class="ghostx" id="b1">Back</button>
+            <button type="button" class="fire" id="n2">Review</button>
+          </div>
+          <div id="c" hidden>
+            <p>Fremont ships in 3–6 days. Free freight US.</p>
+            <button type="button" class="ghostx" id="b2">Back</button>
+            <button class="fire" type="submit">Place order</button>
+          </div>
+        </form>
+        <aside class="side" id="side"></aside>
+      </div>
+    </div>
+  </main>
+  <footer class="zx">150 Circuit Blvd, Fremont, CA 94538 · support@zenthargaming.com · +1 510 555 0198</footer>
+  <div class="shade" id="shade"></div>
+  <aside class="drawer" id="drawer">
+    <div class="dh"><strong>LOADOUT</strong><button class="ghostx" id="dclose">Close</button></div>
+    <div class="db" id="db"></div>
+    <div class="df"><span id="dt">$0</span><a class="fire" href="cart.html">View cart</a></div>
+  </aside>
+  <script src="js/app.js"></script>
+  <script>
+    document.getElementById("side").innerHTML=ZX.load().map(i=>`<p>${i.name} × ${i.qty} ${ZX.money(i.price*i.qty)}</p>`).join("")+`<p><strong>${ZX.money(ZX.total())}</strong></p>`;
+    const A=document.getElementById("a"),B=document.getElementById("b"),C=document.getElementById("c");
+    document.getElementById("n1").onclick=()=>{A.hidden=true;B.hidden=false;};
+    document.getElementById("n2").onclick=()=>{B.hidden=true;C.hidden=false;};
+    document.getElementById("b1").onclick=()=>{B.hidden=true;A.hidden=false;};
+    document.getElementById("b2").onclick=()=>{C.hidden=true;B.hidden=false;};
+    document.getElementById("f").onsubmit=e=>{
+      e.preventDefault();
+      if(!ZX.load().length){location.href="shop.html";return;}
+      sessionStorage.setItem("zenthar_order",JSON.stringify({id:"ZX-"+Math.random().toString(36).slice(2,7).toUpperCase(),total:ZX.total(),items:ZX.load()}));
+      ZX.clear(); location.href="confirm.html";
+    };
+  </script>
+</body>
+</html>

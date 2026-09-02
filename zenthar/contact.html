@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Zenthar Gaming</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="zx">
+    <a class="zl" href="index.html">ZENTHAR</a>
+    <nav id="sidenav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="product.html">GX</a>
+      <a href="about.html">About</a>
+      <a href="support.html">Support</a>
+      <a class="live" href="contact.html">Contact</a>
+    </nav>
+    <div>
+      <button class="fab" data-bag>CART <span data-count>0</span></button>
+      <button class="ham" id="burger">☰</button>
+    </div>
+  </header>
+  <main class="sec">
+    <div class="w">
+      <h1 class="glitch" style="font-size:36px">PING LAB</h1>
+      <div class="contactx" style="margin-top:24px">
+        <form id="cf">
+          <label>Name</label><input required>
+          <label>Email</label><input type="email" required>
+          <label>Message</label><textarea required rows="5"></textarea>
+          <button class="fire" style="margin-top:14px">Send</button>
+          <p class="toast" id="ok"></p>
+        </form>
+        <div class="fremont">
+          <div>
+            <strong>Zenthar Gaming</strong>
+            <p>150 Circuit Blvd<br>Fremont, CA 94538, USA</p>
+            <p>support@zenthargaming.com<br>+1 510 555 0198</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="zx">© 2026 Zenthar Gaming.</footer>
+  <div class="shade" id="shade"></div>
+  <aside class="drawer" id="drawer">
+    <div class="dh"><strong>LOADOUT</strong><button class="ghostx" id="dclose">Close</button></div>
+    <div class="db" id="db"></div>
+    <div class="df"><span id="dt">$0</span><a class="fire" href="cart.html">View cart</a></div>
+  </aside>
+  <script src="js/app.js"></script>
+  <script>document.getElementById("cf").onsubmit=e=>{e.preventDefault();document.getElementById("ok").textContent="Received. Lab replies same day.";e.target.reset();};</script>
+</body>
+</html>

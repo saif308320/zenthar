@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support | Zenthar Gaming</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="zx">
+    <a class="zl" href="index.html">ZENTHAR</a>
+    <nav id="sidenav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="product.html">GX</a>
+      <a href="about.html">About</a>
+      <a class="live" href="support.html">Support</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div>
+      <button class="fab" data-bag>CART <span data-count>0</span></button>
+      <button class="ham" id="burger">☰</button>
+    </div>
+  </header>
+  <main class="sec">
+    <div class="w" style="max-width:760px">
+      <h1 class="glitch" style="font-size:36px">HQ FAQ</h1>
+      <div class="faqx" style="margin-top:24px">
+        <div class="open"><button>Warranty?</button><div class="a">Two years. Advanced swap on GX Pro. We do not void for undervolt.</div></div>
+        <div><button>Can I swap the GPU later?</button><div class="a">No. Buy the silicon you want now. RAM and storage are user slots.</div></div>
+        <div><button>How loud is turbo?</button><div class="a">Honestly loud. Use Quiet BIOS for ranked. Turbo is for LAN and render.</div></div>
+        <div><button>Lead time?</button><div class="a">Stock GX 2–4 days. 4090 configs 7–12 days from Circuit Blvd.</div></div>
+      </div>
+    </div>
+  </main>
+  <footer class="zx">150 Circuit Blvd, Fremont, CA 94538 · support@zenthargaming.com · +1 510 555 0198</footer>
+  <div class="shade" id="shade"></div>
+  <aside class="drawer" id="drawer">
+    <div class="dh"><strong>LOADOUT</strong><button class="ghostx" id="dclose">Close</button></div>
+    <div class="db" id="db"></div>
+    <div class="df"><span id="dt">$0</span><a class="fire" href="cart.html">View cart</a></div>
+  </aside>
+  <script src="js/app.js"></script>
+  <script>document.querySelectorAll(".faqx > div > button").forEach(b=>b.onclick=()=>b.parentElement.classList.toggle("open"));</script>
+</body>
+</html>
